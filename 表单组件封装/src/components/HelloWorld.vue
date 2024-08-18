@@ -1,6 +1,6 @@
 <template>
   <div class="hello" >
-    <select :value="cityId" @change="handleCity">
+    <select :value="value" @change="handleCity">
       <option value="101">三明</option>
       <option value="102">永安</option>
       <option value="103">长汀</option>
@@ -11,10 +11,10 @@
 <script>
 export default {
   name: 'HelloWorld',
-  props:["cityId"],
+  props:["cityId","value"],
   methods:{
     handleCity(event){
-      this.$emit('handle',event.target.value)
+      // this.$emit('handle',event.target.value)
       // 触发第二个HelloWorld
       this.$emit('input',event.target.value)
       

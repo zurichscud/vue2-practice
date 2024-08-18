@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>{{ cityId }}</h1>
-    <HelloWorld :cityId="cityId" @handle="cityId=$event"/>
+    <!-- <HelloWorld :cityId="cityId" @handle="cityId=$event"/> -->
     <h1>v-model简化</h1>
     <HelloWorld v-model="cityId"/>
   </div>
