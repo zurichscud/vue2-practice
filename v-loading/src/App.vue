@@ -1,45 +1,62 @@
 <template>
   <div id="app">
-    <HelloWorld/>
-    <button @click="changeGender">更改gender</button>
+    <div v-loading="isLoading" class="box">
+      数据展示区
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
   },
   data() {
     return {
-      stu: {
-        "id": 12345,
-        "name": "张三",
-        "age": 20,
-        "gender": "男",
-        "major": "计算机科学",
+      isLoading:true,
+
+    }
+  },
+  directives:{
+    loading:{
+      inserted(el,data){
+        data.value? el.classList.add('loading') :el.classList.remove('loading')
+      },
+      update(el,data){
+        data.value? el.classList.add('loading') :el.classList.remove('loading')
       }
+
     }
   },
-  provide(){
-    return {
-      stu:this.stu,
-    };
-  },
-  methods:{
-    changeGender(){
-      this.stu.gender='女'
-      console.log(this.stu);
-    }
+  created(){
+    setTimeout(()=>{
+      this.isLoading=false
+    },3000)
   }
 
 }
 </script>
 
 <style>
+.loading::before{
+  content: '加载中';
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  background-color: burlywood;
+}
+.box{
+  position: relative;
+  background-color: yellowgreen;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  line-height: 400px;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
