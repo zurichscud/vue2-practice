@@ -1,28 +1,34 @@
 <template>
   <div id="app">
-    <h1>{{ cityId }}</h1>
-    <h1>组件通信</h1>
-    <HelloWorld2 :cityId="cityId" @handle="cityId=$event"/>
-    <h1>v-model简化</h1>
-    <HelloWorld v-model="cityId"/>
-    
+    <h1>{{ msg }}</h1>
+    <div v-color="'yellow'">changeColor</div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import HelloWorld2 from './components/HelloWorld2.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,HelloWorld2
   },
   data() {
     return {
-      cityId:101,
+      msg:'directives'
     }
   },
+  methods:{
+  },
+  directives:{
+    color:{
+      inserted(el,data){
+        el.style.backgroundColor=data.value;
+
+      },
+      update(el,binding){
+        el.style.backgroundColor=binding.value;
+      }
+    }
+  }
 
 }
 </script>
