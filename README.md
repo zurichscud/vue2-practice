@@ -1,1 +1,9 @@
 vue2 练习集
+- $event：事件对象
+- 表单组件封装：
+- directive：自定义指令
+- props-and-emit：自定义事件、父子通信
+- provide-and-inject：非父子间通信
+- slot：插槽
+- v-loading：
+- es-lint：使用es-lint进行代码约束
